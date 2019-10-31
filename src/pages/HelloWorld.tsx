@@ -1,12 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SCLogo from "@images/sc-logo.png";
+import { get } from "@utils/http";
+import api from "../../mock/api";
 
 function HelloWorld() {
+  const [name, setName] = useState(" ?? ");
+  const [address, setAddress] = useState(" ?? ");
+
+  useEffect(() => {
+    get(`/api${api.HELLO_WORLD_URL}`).then(res => {
+      setName(res.data.name);
+      setAddress(res.data.address);
+    });
+  }, []);
+
   return (
     <StyledHelloWorld>
       Hello, StarSea!
       <img src={SCLogo} alt="logo" />
+      i'm {name}, i come from {address}
     </StyledHelloWorld>
   );
 }

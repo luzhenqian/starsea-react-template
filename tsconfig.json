@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     // "outDir": "dist", // 打包构建输出的目录
-    "module": "ES6", // 指定生成哪个模块系统代码
+    "module": "ESNext", // 指定生成哪个模块系统代码
     "target": "ESNext", // 指定ECMAScript目标版本
     "lib": ["esnext", "dom"], // 编译过程中需要引入的库文件的列表
     "sourceMap": true, // TypeScript以将内联源映射输出到已编译的JavaScript文件，便于调试
@@ -28,9 +28,11 @@
     // 模块名到基于 baseUrl的路径映射的列表
     "paths": {
       "@pages/*": ["./src/pages/*"],
-      "@images/*": ["./src/assets/images/*"]
+      "@images/*": ["./src/assets/images/*"],
+      "@components/*": ["./src/components/*"],
+      "@utils/*": ["./src/utils/*"]
     }
   },
   "include": ["src"], // 要打包的目标文件列表
-  "exclude": ["node_modules", "build", "scripts"] // 不要打包的文件列表
+  "exclude": ["node_modules", "build", "mock", "dist"] // 不要打包的文件列表
 }

@@ -12,7 +12,9 @@ const config = {
     extensions: [".tsx", ".ts", ".js"],
     alias: {
       "@pages": path.resolve(__dirname, "../src/pages"),
-      "@images": path.resolve(__dirname, "../src/assets/images")
+      "@images": path.resolve(__dirname, "../src/assets/images"),
+      "@components": path.resolve(__dirname, "../src/components"),
+      "@utils": path.resolve(__dirname, "../src/utils")
     }
   },
   module: {
@@ -20,6 +22,10 @@ const config = {
       {
         test: /\.(ts|tsx)/,
         loader: "ts-loader"
+      },
+      {
+        test: /\.css/,
+        loader: ["style-loader", "css-loader"]
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -69,7 +75,16 @@ const config = {
     contentBase: path.join(__dirname, "../dist"),
     hot: true,
     host: "127.0.0.1",
-    port: 3000
+    port: 3000,
+    historyApiFallback: {
+      index: "/index.html"
+    },
+    proxy: {
+      "/api": {
+        target: "http://localhost:8000",
+        pathRewrite: { "^/api": "" }
+      }
+    }
   }
 };
 
