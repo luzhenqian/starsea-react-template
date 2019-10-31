@@ -1,1 +1,1 @@
-module.exports.HELLO_WORLD_URL = "/hello-world";
+module.exports = { HELLO_WORLD_URL: "/hello-world" };

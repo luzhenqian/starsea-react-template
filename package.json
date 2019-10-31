@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-front": "webpack-dev-server --config build/webpack.config.js --mode development --open",
-    "start": "concurrently \"yarn start-front\" \"yarn mock\"",
+    "start:dev": "webpack-dev-server --config build/webpack.config.js --mode development --open",
+    "start": "concurrently \"yarn start:dev\" \"yarn mock\"",
     "build": "webpack --config build/webpack.config.js",
-    "mock": "node ./mock/server.js"
+    "mock": "nodemon ./mock/server.ts"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "koa": "^2.11.0",
     "koa-router": "^7.4.0",
     "mockjs": "^1.1.0",
+    "nodemon": "^1.19.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-loadable": "^5.5.0",
@@ -38,6 +39,7 @@
     "style-loader": "^1.0.0",
     "styled-components": "^4.4.1",
     "ts-loader": "^6.2.1",
+    "ts-node": "^8.4.1",
     "typescript": "^3.6.4",
     "url-loader": "^2.2.0",
     "webpack": "^4.41.2",

@@ -1,4 +1,3 @@
-// @ts-nocheck
 const Koa = require("koa");
 const Router = require("koa-router");
 const Mock = require("mockjs");
@@ -9,8 +8,8 @@ const MockConfig = require("./config");
 let app = new Koa();
 let router = new Router();
 
-MockConfig.forEach(config => {
-  router[config.method](config.url, (ctx, next) => {
+MockConfig.forEach((config: any) => {
+  router[config.method](config.url, (ctx: any, next: any) => {
     next();
     if (typeof config.data === "object") {
       ctx.body = Mock.mock(config.data);

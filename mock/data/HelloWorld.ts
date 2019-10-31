@@ -1,4 +1,6 @@
-module.exports = {
+import DataType from './type'
+
+let data: DataType = {
   code: 200,
   message: "ok",
   data: {
@@ -7,3 +9,5 @@ module.exports = {
     address: "@county(true)"
   }
 };
+
+module.exports = data;
