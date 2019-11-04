@@ -1,25 +1,25 @@
-interface Meta {
-  title: string
+interface IMeta {
+  title: string;
 }
 
-export interface Route {
-  path: string,
-  component: string,
-  exact?: boolean,
-  meta: Meta,
-  requireAuth?: boolean,
-  key?: any
+export interface IRoute {
+  path: string;
+  component: string;
+  exact?: boolean;
+  meta: IMeta;
+  requireAuth?: boolean;
+  key?: any;
 }
 
-const routes: Route[] = [
+const routes: IRoute[] = [
   {
     path: "/",
     component: "HelloWorld",
     exact: true,
     requireAuth: false,
     meta: {
-      title: "首页"
-    }
+      title: "首页",
+    },
   },
   {
     path: "/login",
@@ -27,16 +27,16 @@ const routes: Route[] = [
     exact: true,
     requireAuth: false,
     meta: {
-      title: "登陆页"
-    }
+      title: "登陆页",
+    },
   },
   {
     path: "*",
     component: "NoMatch",
     meta: {
-      title: "页面未找到"
-    }
-  }
-]
+      title: "页面未找到",
+    },
+  },
+];
 
 export default routes;

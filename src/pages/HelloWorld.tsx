@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
 import SCLogo from "@images/sc-logo.png";
+import styled from "styled-components";
 import { get } from "@utils/http";
 import api from "../../mock/api";
 

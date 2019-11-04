@@ -5,7 +5,10 @@ enum Method {
   "GET" = "get",
   "POST" = "post",
   "PUT" = "put",
-  "DELETE" = "delete"
+  "DELETE" = "delete",
+  'HEAD' = "head",
+  'OPTIONS' = "options",
+  'PATCH' = "patch"
 }
 
 interface Config {

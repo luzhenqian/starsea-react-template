@@ -1,6 +1,6 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { Route as RouteType } from "./config";
+import { IRoute as RouteType } from "./config";
 import Loadable from "react-loadable";
 import Loading from "@components/Loading";
 
@@ -9,7 +9,7 @@ const renderRoutes = (
   authed: boolean,
   authPath = "/login",
   extraProps = {},
-  switchProps = {}
+  switchProps = {},
 ): React.ReactChild | null =>
   routes ? (
     <Switch>
@@ -21,7 +21,7 @@ const renderRoutes = (
           render={(props: any) => {
             const LoadableComponent = Loadable({
               loader: () => import(`@pages/${route.component}`),
-              loading: Loading
+              loading: Loading,
             });
             if (!route.requireAuth) {
               return <LoadableComponent {...props} />;
@@ -29,12 +29,12 @@ const renderRoutes = (
             return (
               <Redirect
                 to={{ pathname: authPath, state: { from: props.location } }}
-              ></Redirect>
+              />
             );
           }}
-        ></Route>
+        />
       ))}
-      <Route path="*" render={() => <div>123</div>}></Route>
+      <Route path="*" render={() => <div>123</div>} />
     </Switch>
   ) : null;
 
