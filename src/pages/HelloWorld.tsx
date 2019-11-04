@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from "react";
 import SCLogo from "@images/sc-logo.png";
 import styled from "styled-components";
-import { get } from "@utils/http";
-import api from "../../mock/api";
+import { helloWorld } from "@api/index";
 
 function HelloWorld() {
   const [name, setName] = useState(" ?? ");
   const [address, setAddress] = useState(" ?? ");
 
   useEffect(() => {
-    get(`/api${api.HELLO_WORLD_URL}`).then(res => {
+    helloWorld().then(res => {
       setName(res.data.name);
       setAddress(res.data.address);
     });

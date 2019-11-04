@@ -4,6 +4,7 @@ const Mock = require("mockjs");
 const chalk = require("chalk");
 const program = require("commander");
 const MockConfig = require("./config");
+const net = require("net");
 
 let app = new Koa();
 let router = new Router();
@@ -25,7 +26,25 @@ app.use(router.routes()).use(router.allowedMethods());
 
 program.option("-p, --port <port>", "server port.").parse(process.argv);
 
-const port = program.port || 8000;
+let port: number = program.port || 8000;
 
-app.listen(port);
-console.log(chalk.green("mock server address: http://localhost:" + port));
+function checkPort() {
+  const server = net.createServer().listen(port);
+  server.on("listening", () => {
+    server.close();
+    listen();
+  });
+  server.on("error", (err: any) => {
+    if (err.code === "EADDRINUSE") {
+      port++;
+      checkPort();
+    }
+  });
+}
+
+function listen() {
+  app.listen(port);
+  console.log(chalk.green("mock server address: http://localhost:" + port));
+}
+
+checkPort();

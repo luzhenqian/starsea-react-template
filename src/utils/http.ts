@@ -9,7 +9,7 @@ export enum PostDataType {
   "json",
 }
 
-interface IDataResponse {
+export interface IDataResponse {
   message: string;
   data: any;
   code: number;

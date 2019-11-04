@@ -1,12 +1,12 @@
-// @ts-nocheck
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: "./src/index.tsx",
   output: {
-    filename: "index.js",
+    filename: "[name]_[chunkhash:8].js",
     path: path.resolve(__dirname, "../dist"),
   },
   resolve: {
@@ -16,7 +16,9 @@ const config = {
       "@images": path.resolve(__dirname, "../src/assets/images"),
       "@components": path.resolve(__dirname, "../src/components"),
       "@utils": path.resolve(__dirname, "../src/utils"),
+      "@api": path.resolve(__dirname, "../src/api"),
     },
+    modules: ["node_modules"],
   },
   module: {
     rules: [
@@ -27,7 +29,7 @@ const config = {
       },
       {
         test: /\.css/,
-        loader: ["style-loader", "css-loader"],
+        loader: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -36,7 +38,7 @@ const config = {
             loader: "url-loader",
             options: {
               limit: 8092,
-              name: "img/[hash:7].[ext]",
+              name: "img/[name]_[hash:8].[ext]",
             },
           },
         ],
@@ -48,7 +50,7 @@ const config = {
             loader: "url-loader",
             options: {
               limit: 8092,
-              name: "media/[hash:7].[ext]",
+              name: "media/[name]_[hash:8].[ext]",
             },
           },
         ],
@@ -60,7 +62,7 @@ const config = {
             loader: "url-loader",
             options: {
               limit: 8092,
-              name: "font/[hash:7].[ext]",
+              name: "font/[name]_[hash:8].[ext]",
             },
           },
         ],
@@ -71,26 +73,15 @@ const config = {
     new HtmlWebpackPlugin({
       template: "./public/index.htm",
       title: "starsea模板",
+      // chunks: ["vendors"],
     }),
     new StyleLintPlugin({
-      files: ["src/*.css", "src/**/*.css", "src/**/**/*.css"],
+      files: ["src/*.css", "src/**/*.css"],
+    }),
+    new MiniCssExtractPlugin({
+      filename: "[name]_[contenthash:8].css",
     }),
   ],
-  devServer: {
-    contentBase: path.join(__dirname, "../dist"),
-    hot: true,
-    host: "127.0.0.1",
-    port: 3000,
-    historyApiFallback: {
-      index: "/index.html",
-    },
-    proxy: {
-      "/api": {
-        target: "http://localhost:8000",
-        pathRewrite: { "^/api": "" },
-      },
-    },
-  },
 };
 
 module.exports = config;

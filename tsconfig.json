@@ -30,7 +30,8 @@
       "@pages/*": ["./src/pages/*"],
       "@images/*": ["./src/assets/images/*"],
       "@components/*": ["./src/components/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@utils/*": ["./src/utils/*"],
+      "@api/*": ["./src/api/*"]
     }
   },
   "include": ["src"], // 要打包的目标文件列表
