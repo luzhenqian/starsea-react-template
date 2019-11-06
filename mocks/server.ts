@@ -1,13 +1,14 @@
-const Koa = require("koa");
-const Router = require("koa-router");
-const Mock = require("mockjs");
-const chalk = require("chalk");
-const program = require("commander");
-const MockConfig = require("./config");
-const net = require("net");
+import Koa from "koa";
+import Router from "koa-router";
+import Mock from "mockjs";
+import chalk from "chalk";
+import program from "commander";
+import MockConfig from "./config";
+import net from "net";
+// import websocket
 
-let app = new Koa();
-let router = new Router();
+const app = new Koa();
+const router: any = new Router();
 
 MockConfig.forEach((config: any) => {
   router[config.method](config.url, (ctx: any, next: any) => {

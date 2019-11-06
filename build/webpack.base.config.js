@@ -1,7 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
   entry: "./src/index.tsx",
@@ -26,10 +25,6 @@ const config = {
         test: /\.(ts|tsx)/,
         enforce: "pre",
         use: ["ts-loader", "tslint-loader"],
-      },
-      {
-        test: /\.css/,
-        loader: [MiniCssExtractPlugin.loader, "css-loader"],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
@@ -73,13 +68,18 @@ const config = {
     new HtmlWebpackPlugin({
       template: "./public/index.htm",
       title: "starsea模板",
+      minify: {
+        html5: true,
+        collapseWhitespace: true,
+        preserveLineBreaks: false,
+        minifyCSS: true,
+        minifyJS: true,
+        removeComments: false,
+      },
       // chunks: ["vendors"],
     }),
     new StyleLintPlugin({
       files: ["src/*.css", "src/**/*.css"],
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name]_[contenthash:8].css",
     }),
   ],
 };

@@ -35,5 +35,5 @@
     }
   },
   "include": ["src"], // 要打包的目标文件列表
-  "exclude": ["node_modules", "build", "mock", "dist"] // 不要打包的文件列表
+  "exclude": ["node_modules", "build", "mocks", "dist"] // 不要打包的文件列表
 }

@@ -2,6 +2,18 @@ const path = require("path");
 
 const config = {
   mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.css/,
+        loader: ["style-loader", "css-loader"],
+      },
+    ],
+  },
+  output: {
+    filename: "[name]_[hash:8].js",
+    path: path.resolve(__dirname, "../dist"),
+  },
   // devtool: "source-map",
   devServer: {
     contentBase: path.join(__dirname, "../dist"),

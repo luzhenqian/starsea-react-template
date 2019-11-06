@@ -1,0 +1,25 @@
+{
+  "name": "mock",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/koa": "^2.0.51",
+    "@types/koa-router": "^7.0.42",
+    "@types/mockjs": "^1.0.2",
+    "@types/node": "^12.12.6",
+    "chalk": "^2.4.2",
+    "koa": "^2.11.0",
+    "koa-router": "^7.4.0",
+    "mockjs": "^1.1.0",
+    "nodemon": "^1.19.4",
+    "ts-node": "^8.4.1",
+    "typescript": "^3.7.2"
+  }
+}

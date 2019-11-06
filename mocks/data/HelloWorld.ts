@@ -1,4 +1,4 @@
-import DataType from './type'
+import DataType from "./type";
 
 let data: DataType = {
   code: 200,
@@ -6,8 +6,7 @@ let data: DataType = {
   data: {
     name: "@cname",
     email: "@email",
-    address: "@county(true)"
-  }
+    address: "@county(true)",
+  },
 };
-
-module.exports = data;
+export default data;
