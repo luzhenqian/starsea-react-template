@@ -31,7 +31,9 @@
       "@images/*": ["./src/assets/images/*"],
       "@components/*": ["./src/components/*"],
       "@utils/*": ["./src/utils/*"],
-      "@api/*": ["./src/api/*"]
+      "@api/*": ["./src/api/*"],
+      "@actions": ["./src/redux/actions"],
+      "@reducers/*": ["./src/redux/reducers/*"]
     }
   },
   "include": ["src"], // 要打包的目标文件列表

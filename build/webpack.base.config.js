@@ -16,6 +16,8 @@ const config = {
       "@components": path.resolve(__dirname, "../src/components"),
       "@utils": path.resolve(__dirname, "../src/utils"),
       "@api": path.resolve(__dirname, "../src/api"),
+      "@actions": path.resolve(__dirname, "../src/redux/actions"),
+      "@reducers": path.resolve(__dirname, "../src/redux/reducers"),
     },
     modules: ["node_modules"],
   },

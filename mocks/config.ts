@@ -1,4 +1,4 @@
-import api from "./api";
+import { HELLO_WORLD_URL } from "./api";
 import HelloWorldData from "./data/HelloWorld";
 
 enum Method {
@@ -21,7 +21,7 @@ interface IConfig {
 const configs: IConfig[] = [
   {
     method: Method.GET,
-    url: api.HELLO_WORLD_URL,
+    url: HELLO_WORLD_URL,
     data: HelloWorldData,
   },
 ];
