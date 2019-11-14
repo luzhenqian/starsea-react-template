@@ -5,6 +5,7 @@ import { getInfo as getInfoReducer } from "@reducers/getInfo";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { GET_INFO_BEGIN, GET_INFO_SUCCESS } from "@actions";
+import { Button } from "antd";
 
 function HelloWorld({
   getInfo,
@@ -33,6 +34,7 @@ function HelloWorld({
           Hello, StarSea!
           <img src={SCLogo} alt="logo" />
           i'm {name}, i come from {address}
+          <Button>hi</Button>
         </StyledHelloWorld>
       ) : null}
     </>
