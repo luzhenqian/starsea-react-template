@@ -1,12 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const StyleLintPlugin = require("stylelint-webpack-plugin");
+const tsImportPluginFactory = require("ts-import-plugin");
 
 const config = {
   entry: "./src/index.tsx",
   output: {
     filename: "[name]_[chunkhash:8].js",
     path: path.resolve(__dirname, "../dist"),
+    publicPath: "/",
   },
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
@@ -25,8 +27,27 @@ const config = {
     rules: [
       {
         test: /\.(ts|tsx)/,
+        exclude: /node_modules/,
         enforce: "pre",
-        use: ["ts-loader", "tslint-loader"],
+        use: ["tslint-loader"],
+      },
+      {
+        test: /\.(ts|tsx)/,
+        exclude: /node_modules/,
+        loader: [
+          {
+            loader: "ts-loader",
+            options: {
+              transpileOnly: true,
+              getCustomTransformers: () => ({
+                before: [tsImportPluginFactory()],
+              }),
+              compilerOptions: {
+                module: "es2015",
+              },
+            },
+          },
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

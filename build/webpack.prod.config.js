@@ -1,7 +1,6 @@
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const tsImportPluginFactory = require("ts-import-plugin");
 
 module.exports = {
   mode: "production",
@@ -10,22 +9,6 @@ module.exports = {
       {
         test: /\.css/,
         loader: [MiniCssExtractPlugin.loader, "css-loader"],
-      },
-      {
-        test: /\.(ts|tsx)/,
-        loader: "ts-loader",
-        options: {
-          libraryName: "antd",
-          libraryDirectory: "lib",
-          style: true,
-          transpileOnly: true,
-          getCustomTransformers: () => ({
-            before: [tsImportPluginFactory(/** options */)],
-          }),
-          compilerOptions: {
-            module: "es2015",
-          },
-        },
       },
     ],
   },
