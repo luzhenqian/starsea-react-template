@@ -33,7 +33,9 @@
       "@utils/*": ["./src/utils/*"],
       "@api/*": ["./src/api/*"],
       "@actions": ["./src/redux/actions"],
-      "@reducers/*": ["./src/redux/reducers/*"]
+      "@reducers/*": ["./src/redux/reducers/*"],
+      "@config/*": ["./src/config/*"],
+      "@url": ["./mocks/api"]
     }
   },
   "include": ["src"], // 要打包的目标文件列表

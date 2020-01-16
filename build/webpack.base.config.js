@@ -20,6 +20,8 @@ const config = {
       "@api": path.resolve(__dirname, "../src/api"),
       "@actions": path.resolve(__dirname, "../src/redux/actions"),
       "@reducers": path.resolve(__dirname, "../src/redux/reducers"),
+      "@config": path.resolve(__dirname, "../src/config"),
+      "@url": path.resolve(__dirname, "../mocks/api"),
     },
     modules: ["node_modules"],
   },
